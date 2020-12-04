@@ -3,6 +3,7 @@
 
 steps:
 
+- script: git config --global http.postBuffer 1048576000
 - checkout: self
   submodules: true
   fetchDepth: 50
