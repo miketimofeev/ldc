@@ -208,16 +208,3 @@ jobs:
         echo "##vso[task.setvariable variable=GITHUB_RELEASE_TAG]$releaseTag"
         echo "##vso[task.setvariable variable=GITHUB_RELEASE_ISPRERELEASE]$isPreRelease"
       displayName: Set GITHUB_RELEASE_{TAG,ISPRERELEASE} env variables
-    - task: GitHubRelease@0
-      inputs:
-        gitHubConnection: kinke
-        repositoryName: ldc-developers/ldc
-        action: edit
-        tag: $(GITHUB_RELEASE_TAG)
-        assets: artifacts/*
-        assetUploadMode: replace
-        # If we omit this, GitHub's isPreRelease flag is overwritten by the default `false`.
-        isPreRelease: $(GITHUB_RELEASE_ISPRERELEASE)
-        # If we omit this, an automatic change log is appended to the GitHub description.
-        addChangeLog: false
-      displayName: Upload artifacts to GitHub release
