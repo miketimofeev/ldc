@@ -139,6 +139,10 @@ jobs:
     MACOSX_DEPLOYMENT_TARGET: 10.9
     IOS_DEPLOYMENT_TARGET: 12.0
   steps:
+    - bash: |
+       export GIT_TRACE_PACKET=1
+       export GIT_TRACE=1
+       export GIT_CURL_VERBOSE=1
     - template: .azure-pipelines/posix.yml
 
 - job: Android
